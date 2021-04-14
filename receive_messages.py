@@ -21,6 +21,6 @@ if(messages):
             )
             print('Message processed and deleted successfully!')
         except:
-            print('Message ins not a JSON')
+            print('Message is not a JSON')
 else:
     print('No message received')
