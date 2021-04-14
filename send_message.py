@@ -8,18 +8,18 @@ queue = sqs.get_queue_by_name(QueueName='queue-test')
 try:
     response = queue.send_message(
         MessageBody=json.dumps({
-            'conta_origem': {
-                'agencia': '0001',
-                'numero_conta': '123456-7',
+            'origin_account': {
+                'agency': '0001',
+                'account_number': '123456-7',
             },
-            'conta_destino': {
-                'agencia': '0001',
-                'numero_conta': '765432-1'
+            'destiny_account': {
+                'agency': '0001',
+                'account_number': '765432-1'
             },
-            'valor': 1000,
-            'moeda': 'BRL'
+            'value': 1000,
+            'currency': 'BRL'
         })
     )
-    print('Transação realizada')
+    print('Transference done')
 except:
-    print('Ocorreu um erro ao realizar a transação')
+    print('An error has occurred')

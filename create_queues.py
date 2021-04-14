@@ -26,7 +26,7 @@ sqs_client.set_queue_attributes(
     QueueUrl=queue.url,
     Attributes={
         'RedrivePolicy': json.dumps(redrive_policy),
-        'VisibilityTimeout': '5'
+        'VisibilityTimeout': '5',
         'ReceiveMessageWaitTimeSeconds': 20
     }
 )
@@ -34,7 +34,7 @@ sqs_client.set_queue_attributes(
 sqs_client.set_queue_attributes(
     QueueUrl=dlq_queue.url,
     Attributes={
-        'VisibilityTimeout': '5'
+        'VisibilityTimeout': '5',
         'ReceiveMessageWaitTimeSeconds': 20
     }
 )

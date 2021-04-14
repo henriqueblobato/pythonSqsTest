@@ -10,12 +10,12 @@ messages = queue.receive_messages()
 
 if(messages):
     for message in messages:
-        print('Processando mensagem da DLQ...')
-        print(f'Conteudo da mensagem \n {message.body}')
+        print('Processing message from DLQ...')
+        print(f'Message content: \n {message.body}')
         sqs_client.delete_message(
             QueueUrl=queue.url,
             ReceiptHandle=message.receipt_handle
         )
-        print('Mensagem da DLQ processada (e excluída) com sucesso!')
+        print('DLQ message successfully processed and deleted!')
 else:
-    print('Nenhuma mensagem recebida da DLQ')
+    print('No message received from DLQ')

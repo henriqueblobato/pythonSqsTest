@@ -12,15 +12,15 @@ if(messages):
     for message in messages:
         try:
             message_body = json.loads(message.body)
-            print('Processando mensagem...')
-            print(f'Realizando trasnferência da conta {message_body["conta_origem"]["numero_conta"]} para a conta {message_body["conta_destino"]["numero_conta"]}')
-            print(f'Transferência no valor de {message_body["valor"]} {message_body["moeda"]} efetivada!')
+            print('Processing message...')
+            print(f'Transferring from account {message_body["origin_account"]["account_number"]} to account {message_body["destiny_account"]["account_number"]}')
+            print(f'Transference value: {message_body["value"]}, currency {message_body["currency"]} completed!')
             sqs_client.delete_message(
                 QueueUrl=queue.url,
                 ReceiptHandle=message.receipt_handle
             )
-            print('Mensagem processada (e excluída) com sucesso!')
+            print('Message processed and deleted successfully!')
         except:
-            print('Mensagem não está no formato JSON')
+            print('Message ins not a JSON')
 else:
-    print('Nenhuma mensagem recebida')
+    print('No message received')
